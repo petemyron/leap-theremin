@@ -52,11 +52,11 @@ class SampleListener(Leap.Listener):
             for hand in frame.hands:
                 # left hand volume
                 if hand.is_left:
-                    volume = int(hand.palm_position[1] / 10 * -1) # y coordinate
+                    volume = int(hand.palm_position[1] / 5 ) - 100 # y coordinate, with an offset
 
                 # right hand pitch
                 else:
-                    pitch = int(hand.palm_position[0] / 5) - 5 # x coordinate, with x offset
+                    pitch = (hand.palm_position[0] / 5) - 5 # x coordinate, with an offset
 
             print("\rvolume: %d, pitch: %d               " % (volume, pitch), end = '', flush = True)
             update_tone(volume, pitch)
